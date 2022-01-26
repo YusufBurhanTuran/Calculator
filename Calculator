@@ -1,0 +1,39 @@
+from distutils import command
+from tkinter import *
+
+def yaz(x):
+    s = len(giris.get())
+    giris.insert(s,str(x))
+#yazılacak karakterler entry'e tanımlandı. "s" değişkeni tanımlandı. "len" komutuyla str değeri yeniden hesaplanacak ve "s" değerine atanacak. 
+    print(x)
+#yaz fonksiyonu tanımlandı.
+
+pencere = Tk()
+pencere.geometry("250x300")
+#pencerenin boyutunu oluşturan satır
+giris = Entry(font="Verdana 14 bold",width=15,justify=RIGHT)
+#text alanı oluşturuldu. Bu alana kullanıcı rakamlarını girecek ve hesaplamalarını gerçekleştirecek
+#width komutu ile boyutunu; justify ile sağ tarafa hizalama yaptık.
+giris.place(x=20,y=20)
+#8. satırda text alanını ekrana yerleştirdik. x ve y ekseninde koordinatlarını girdik.
+
+b = []
+#b değişkeninin bir dizi olduğunu belirttik.
+for i in range(1,10):
+#butonların yerleştirilmesi için bir "for" döngüsü oluşturuldu.
+    b.append (Button(text=str(i),font="Verdana 14 bold", command=lambda x=i:yaz(x)))
+#butonlar oluşturuldu. Butonların içindeki değerler belirlendi. Butonlara tıkladığımızda entry alanına yazması için butonlara command atadık.
+
+sayac = 0
+
+for i in range(0,3):
+    for j in range(0,3):
+        b[sayac].place(x=20+j*50, y=50+i*50)
+        sayac += 1 
+#butonlar yerleştirildi
+
+
+
+
+
+pencere.mainloop()
