@@ -8,6 +8,19 @@ def yaz(x):
     print(x)
 #yaz fonksiyonu tanımlandı.
 
+hesap = 5 
+s1 = 0 
+#hesap değişkeni "global" değişken olarak tanımlandı.
+def islemler(x):
+    global hesap
+    hesap = x 
+    global s1
+    s1 = int(giris.get())
+    print(hesap)
+    print(s1)
+    giris.delete(0,'end')
+#islemler fonksiyonu ve hesap adlı değişken tanımlandı.ilk sayı yazıldıktan sonra ve yapılacak işlem belirlendikten sonra ikinci sayının yazılması için entry kısmının boşaltılması işlemi tanımlandı. 
+
 pencere = Tk()
 pencere.geometry("250x300")
 #pencerenin boyutunu oluşturan satır
@@ -32,7 +45,19 @@ for i in range(0,3):
         sayac += 1 
 #butonlar yerleştirildi
 
+islem = []
+for i in range (0,4):
+    islem.append(Button(font="Verdana 14 bold",width=2, command=lambda x=i:islemler(X)))
 
+islem[0]['text'] ="+"
+islem[1]['text'] ="-"
+islem[2]['text'] ="*"
+islem[3]['text'] ="/"
+
+for i in range(0,4):
+#toplama işleminin butonunu döngüyle yerlestirilecek.
+    islem[i].place(x=170,y=50+50*i)
+#butonunun x ve y eksenindeki koordinatları girildi.
 
 
 
