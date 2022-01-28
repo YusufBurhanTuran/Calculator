@@ -21,6 +21,27 @@ def islemler(x):
     giris.delete(0,'end')
 #islemler fonksiyonu ve hesap adlı değişken tanımlandı.ilk sayı yazıldıktan sonra ve yapılacak işlem belirlendikten sonra ikinci sayının yazılması için entry kısmının boşaltılması işlemi tanımlandı. 
 
+s2 = 0
+def hesapla():
+    global s2
+    s2 = float(giris.get())
+    print(s2)
+    global hesap
+    sonuc=0
+    if (hesap==0):
+        sonuc = s1 + s2
+    elif(hesap==1):
+        sonuc = s1 - s2
+    elif(hesap==2):
+        sonuc = s1 * s2
+    elif(hesap==3):
+        sonuc = s1 / s2
+    giris.delete(0,'end')
+    giris.insert(0,str(sonuc))
+#"s2" adı altında 2. sayı tanımlandı
+#toplama, çıkarma, bölme ve çarpma işlemleri gerçekleştrirlmesi için if komutu ile bir döngü oluşturuldu.
+#"s2" değişkeni global olarak kullanılacağı için global değişken olarak tanımlandı.
+
 pencere = Tk()
 pencere.geometry("250x300")
 #pencerenin boyutunu oluşturan satır
@@ -59,6 +80,21 @@ for i in range(0,4):
     islem[i].place(x=170,y=50+50*i)
 #butonunun x ve y eksenindeki koordinatları girildi.
 
+sb = Button(text="0", font= "Verdana 14 bold", command=lambda x= 0:yaz(0))
+sb.place(x=20,y=200)
+#sıfır butonunun font, text ve command değerleri girildi. X ve y ekseninde koordinatları girildi.
+
+nb = Button(text=".", font="Verdana 14 bold", width=2, command=lambda x=".":yaz("."))
+nb.place(x=70,y=200)
+#nokta butonu yerleştirildi. font, text, width ve command değerleri girildi. X ve Y ekseninde koordinatları girildi.
+
+eb = Button(text="=",fg="RED" ,font="Verdana 14 bold", command=hesapla)
+eb.place(x=120,y=200)
+#eşittir butonu yerleştirildi. x ve y koordinatları girildi. Font, text değerleri girildi. Eşittir butonu "fg" komutuyla renklendirildi.
+
+cb = Button(text="C", width=2, font="Verdana 14 bold", command=lambda x="C":yaz("C"))
+cb.place(x=20, y=250)
+#Clear özelliğini kullanmak için "C" butonu eklendi. text, width, font ve command değerleri girildi.
 
 
 pencere.mainloop()
