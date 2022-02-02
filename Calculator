@@ -8,6 +8,15 @@ def yaz(x):
     print(x)
 #yaz fonksiyonu tanımlandı.
 
+def sıfırla():
+    giris.delete(0, 'end')
+#AC butonunun işlevini yerine getirmesi için fonksiyon tanımlandı.
+
+def teksil():
+    metinuzunlugu = len(giris.get())
+    giris.delete(metinuzunlugu-1, END)
+#sil komutunun çalışması için gereken fonksiyon tanımlandı.
+
 hesap = 5 
 s1 = 0 
 #hesap değişkeni "global" değişken olarak tanımlandı.
@@ -92,9 +101,13 @@ eb = Button(text="=",fg="RED" ,font="Verdana 14 bold", command=hesapla)
 eb.place(x=120,y=200)
 #eşittir butonu yerleştirildi. x ve y koordinatları girildi. Font, text değerleri girildi. Eşittir butonu "fg" komutuyla renklendirildi.
 
-cb = Button(text="C", width=2, font="Verdana 14 bold", command=lambda x="C":yaz("C"))
-cb.place(x=20, y=250)
-#Clear özelliğini kullanmak için "C" butonu eklendi. text, width, font ve command değerleri girildi.
+cb = Button(text="AC",fg ="BLUE",font="Verdana 14 bold",command=sıfırla)
+cb.place(x=20,y=250)
+#ac butonu eklendi. x ve y eksenlerindeki koordinatları girildi. font, text ve command değerleri girildi.
 
+tsb = Button(text="Sil",font="Verdana 14 bold",command= teksil)
+tsb.place(x=117, y=250)
+#sil butonu eklendi. x ve y ekseindeki koordinatlar girildi. font, text ve command değerleri girildi.
 
 pencere.mainloop()
+
